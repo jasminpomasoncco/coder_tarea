@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <br>
+    {{#if existproducts}}
+<table class="table table-danger table-striped">
+
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Price S/.</th>
+      <th scope="col">Image</th>
+    </tr>
+  
+    <tbody id="listproducts">
+    </tbody>
+
+</table>
+{{else}}
+<h3>no se encontraron datos</h3>
+{{/if}}
+</div>
