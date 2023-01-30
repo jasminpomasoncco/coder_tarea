@@ -9,6 +9,7 @@ const getAllProducts = async(req, res) => {
     try {
         res.json({
             products: await contenedor_products.recuperar()
+
         });
 
     } catch (error) {
@@ -40,9 +41,10 @@ const getProductById = async(req, res) => {
 
 const createProduct = async(req, res) => {
     try {
-        const new_product = req.body
-        new_product.id = randomUUID()
-        await contenedor_products.guardar(new_product)
+        const { title, price,thumbnail} = req.body;
+        const id = req.body
+        id = randomUUID()
+        await contenedor_products.guardar(id,title, price,thumbnail)
         //res.json(new_product);
         console.log('aaaaaaaaaa')
         

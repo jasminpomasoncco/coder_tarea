@@ -8,7 +8,7 @@ const httpServer=new HttpServer(app)
 const io = new IOServer(httpServer)
 
 const ContenedorSQL = require('./contenedores/contenedor_mysql');
-const clienteSql = require('../sql/options_mysql')
+const clienteSql = require('./sql/options_mysql')
 const contenedor_products = new ContenedorSQL(clienteSql, 'products')
 const router_products = require('./routes/router')
 const router_messages = require('./routes/router_messages')
@@ -28,7 +28,7 @@ app.use('/api/products', router_products);
 app.use('/api/messages', router_messages);
 
 app.get('/', async (req, res) => {
-    const Allproducts= await product.getAll();
+    const Allproducts= await product.recuperar();
     const Allmessages=await message.getAll();
     res.render('products',{Allproducts, existproducts: Allproducts.length > 0,Allmessages});
 })
