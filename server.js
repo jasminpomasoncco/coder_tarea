@@ -15,7 +15,10 @@ const router_messages = require('./routes/router_messages')
 const Product =  require('./contenedores/contenedor_mysql');
 const product = new Product('data/productos.txt');
 const Message =  require('./contenedores/contenedor_messages');
+const UserRouter = require('./test/router_test');
 const message = new Message('data/messages.txt');
+const UserRouter = require('./test/router_test')
+const router_productstest = UserRouter();
 
 app.use( express.static('/public'))
 app.use(express.urlencoded({ extended: true }))
@@ -26,6 +29,7 @@ app.use(express.json());
 
 app.use('/api/products', router_products);
 app.use('/api/messages', router_messages);
+app.use('/api/products_test', router_productstest);
 
 app.get('/', async (req, res) => {
     const Allproducts= await product.recuperar();

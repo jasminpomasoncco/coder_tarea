@@ -21,14 +21,13 @@ const getAllProducts = async(req, res) => {
 
 const getProductById = async(req, res) => {
     try {
-        const productFound = await product.getById(+req.params.id);
+        const productFound = await contenedor_products.recuperarById(+req.params.id);
 
         if(!productFound){
             return res.json({
                 error: 'Product not found'
             })
         }
-
         return res.json({
             producto: productFound
         })
@@ -75,7 +74,7 @@ const updateProduct = async(req, res) => {
 
 const deletePoduct = (req, res) => {
     try {
-        product.deleteById(+req.params.id)
+        contenedor_products.delete(id)
         return res.json({
             message: 'Product deleted'
         })

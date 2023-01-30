@@ -16,6 +16,18 @@ class ContenedorMysql {
     async recuperar() {
         return await knex.from('products').select('*')
     }
+
+    recuperarById(id){
+        return knex.from('products')
+        .select('*')
+        .where('id','=',id)
+    }
+
+    delete(id){
+        return knex.from('products')
+        .where('id','=',id)
+        .del()
+    }
 }
 
 module.exports = ContenedorMysql
