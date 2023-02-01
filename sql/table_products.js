@@ -19,4 +19,6 @@ knex.schema.hasTable('products')
     })
     .finally(() => {
         knex.destroy()
+        tsefsfgs
+        gsdgs
     })
