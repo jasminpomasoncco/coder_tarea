@@ -17,8 +17,8 @@ const product = new Product('data/productos.txt');
 const Message =  require('./contenedores/contenedor_messages');
 const UserRouter = require('./test/router_test');
 const message = new Message('data/messages.txt');
-const UserRouter = require('./test/router_test')
-const router_productstest = UserRouter();
+//const UserRouter = require('./test/router_test')
+//const router_productstest = UserRouter();
 
 app.use( express.static('/public'))
 app.use(express.urlencoded({ extended: true }))
@@ -29,12 +29,19 @@ app.use(express.json());
 
 app.use('/api/products', router_products);
 app.use('/api/messages', router_messages);
-app.use('/api/products_test', router_productstest);
+//app.use('/api/products_test', router_productstest);
+
+var valor =1;
 
 app.get('/', async (req, res) => {
     const Allproducts= await product.recuperar();
     const Allmessages=await message.getAll();
-    res.render('products',{Allproducts, existproducts: Allproducts.length > 0,Allmessages});
+    if(valor){
+        res.render('products',{Allproducts, existproducts: Allproducts.length > 0,Allmessages});
+    }
+    else{
+        res.render('login')
+    }
 })
 
 io.on('connection', socket => {
