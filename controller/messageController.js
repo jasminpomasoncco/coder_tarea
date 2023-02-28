@@ -1,5 +1,5 @@
-const Message =  require('../contenedores/contenedor_messages');
-const message = new Message('data/messages.txt');
+const Message =  require('../container/contenedor_messages');
+const message = new Message('../data/messages.txt');
 
 const getAllMessages = async(req, res) => {
     try {

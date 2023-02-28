@@ -5,7 +5,7 @@ knex.schema.hasTable('products')
     .then(exists => {
         if (!exists) {
             knex.schema.createTable('products', tabla => {
-                tabla.increments('id'),
+                tabla.string('id'),
                     tabla.string('title'),
                     tabla.integer('price'),
                     tabla.string('thumbnail')

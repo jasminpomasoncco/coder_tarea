@@ -1,10 +1,10 @@
-const Product =  require('../contenedores/contenedor');
+const Product =  require('../container/contenedor');
 //const product = new Product('data/productos.txt');
-const ContenedorSQL = require('../contenedores/contenedor_mysql.js');
+const ContenedorSQL = require('../container/contenedor_mysql.js');
 const clienteSql = require('../sql/options_mysql')
-const contenedor_products = new ContenedorSQL(clienteSql, 'products')
+const contenedor_products = new ContenedorSQL(clienteSql, products)
 const { randomUUID } =  require('crypto')
-
+//update products container, router, mysql
 const getAllProducts = async(req, res) => {
     try {
         res.json({
@@ -40,12 +40,10 @@ const getProductById = async(req, res) => {
 
 const createProduct = async(req, res) => {
     try {
-        const { title, price,thumbnail} = req.body;
-        const id = req.body
-        id = randomUUID()
+        const {id, title, price,thumbnail} = req.body;
+        //const id = randomUUID()
         await contenedor_products.guardar(id,title, price,thumbnail)
         //res.json(new_product);
-        console.log('aaaaaaaaaa')
         
     } catch (error) {
         res.status(500).json({

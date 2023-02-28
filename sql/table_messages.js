@@ -5,7 +5,7 @@ knex.schema.hasTable('messages')
     .then(exists => {
         if (!exists) {
             knex.schema.createTable('messages', tabla => {
-                tabla.increments('id'),
+                tabla.string('id'),
                     tabla.string('email'),
                     tabla.string('messages'),
                     tabla.date('date_at')
